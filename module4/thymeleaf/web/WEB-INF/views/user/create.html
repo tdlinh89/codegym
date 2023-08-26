@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new user</title>
+</head>
+<body>
+    <h1 th:text="${action} == 'create' ? 'Create new user' : 'Edit user'" >Create new user</h1>
+    <form name="create" th:action="@{/user/create}" method="post" th:object="${user}">
+        <table>
+            <tr>
+                <td>ID</td>
+                <td><input type="text" th:placeholder="${'ID of user'}" name="id" th:field="*{id}"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" th:placeholder="${'Name of user'}" name="name" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="text" th:placeholder="${'Age of user'}" name="id" th:field="*{age}"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><input type="text" th:placeholder="${'Address of user'}" name="id" th:field="*{address}"></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="reset">Reset</button>
+                </td>
+                <td>
+                    <button type="submit">Submit</button>
+                </td>
+            </tr>
+        </table>
+        <p th:data th:attr="data=${'aa' + user.id}"></p>
+        <input type="hidden" name="action" th:value="${action}" th:id="">
+    </form>
+</body>
+</html>
